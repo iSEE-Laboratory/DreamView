@@ -1,4 +1,4 @@
-# DreamView🤔🪄
+# DreamView
 Official PyTorch implementation of paper “DreamView: Injecting View-specific Text Guidance into Text-to-3D Generation”. 
 
 ![-](assets/2D.png)
@@ -27,18 +27,21 @@ We also provide our environment for reference, as shown in `DreamView-2D/env-Dre
 - Download the checkpoints at [Baidu Drive](https://pan.baidu.com/s/19k9qK7bNNWlChWfe483s9w?pwd=r3ie) (we will upload it to other platforms later)
 - Move the checkpoints to `DreamView-2D/ckpts/`
 
-### Text-to-image Generation
-#### Inference
+## Text-to-image Generation
+### Inference
+Running the below script
 ```
 cd DreamView-2D
 python t2i.py --num_samples 4 --fp16
 ```
+and you are expected to obtain the below result:
+![-](assets/output-2d.png)
 It takes about 10G GPU memory to run the text-to-image generation, and you can modify the `DreamView-2D/t2i.py` to generate your own content.
 
-#### Training
+### Training
 TBD...
 
-### Text-to-3D Generation
+## Text-to-3D Generation
 TBD...
 
 If you have any problem, feel free to open an issue or contact me :-)
