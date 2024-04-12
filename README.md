@@ -25,7 +25,7 @@ We also provide our environment for reference, as shown in `DreamView-2D/env-Dre
 
 ### Checkpoint
 - Download the checkpoints at [Baidu Drive](https://pan.baidu.com/s/19k9qK7bNNWlChWfe483s9w?pwd=r3ie) (we will upload it to other platforms later)
-- Move the checkpoints to `DreamView-2D/ckpts/`
+- Move the checkpoints to `ckpts/`
 
 ## Text-to-image Generation
 ### Inference
