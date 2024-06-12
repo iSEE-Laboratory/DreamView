@@ -1,3 +1,6 @@
+# Copyright (c) Alibaba, Inc. and its affiliates.
+# @author:  Drinky Yan
+# @contact: yanjk3@mail2.sysu.edu.cn
 import argparse, os, sys, datetime, glob, importlib, csv
 import numpy as np
 import time
