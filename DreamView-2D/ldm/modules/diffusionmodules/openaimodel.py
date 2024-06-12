@@ -1,3 +1,6 @@
+# Copyright (c) Alibaba, Inc. and its affiliates.
+# @author:  Drinky Yan
+# @contact: yanjk3@mail2.sysu.edu.cn
 from abc import abstractmethod
 import math
 
