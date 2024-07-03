@@ -8,6 +8,7 @@ This repository currently only includes the inference code for text-to-image gen
 You can check `DreamView-2D/` for the text-to-image generation code.
 
 ## News
+- 2024/7/3: Our paper is accepted by ECCV 2024, congratulations and many thanks to the co-authors!🥳🎉🎊
 - 2024/4/11: We release the inference code of DreamView-2D, and the DreamView checkpoint: [Baidu Drive](https://pan.baidu.com/s/19k9qK7bNNWlChWfe483s9w?pwd=r3ie), [Google Drive](https://drive.google.com/file/d/1MD35zN5niGkV_u77cyLClpVFKjreO1Bf/view?usp=sharing), [ModelScope](https://www.modelscope.cn/models/Drinky/DreamView/summary), [HuggingFace](https://huggingface.co/Drinky/DreamView)
 - 2024/4/10: Our arxiv paper can be found [here](https://arxiv.org/abs/2404.06119)
 
