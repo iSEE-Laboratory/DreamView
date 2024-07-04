@@ -1,0 +1,116 @@
+model:
+  base_learning_rate: 1.0e-04
+  target: extern.dreamview.ldm.models.diffusion.ddpm.LatentDiffusion
+  params:
+    linear_start: 0.00085
+    linear_end: 0.0120
+    num_timesteps_cond: 1
+    log_every_t: 200
+    timesteps: 1000
+    first_stage_key: 
+    cond_stage_key: 
+    image_size: 32
+    channels: 4
+    cond_stage_trainable: false 
+    conditioning_key: 
+    monitor: val/loss_simple_ema
+    scale_factor: 0.18215
+    injection: 2 # 0-direct, 1-concat, 2-alternating
+    margin: [-0.1, 0.1] # larger -> more consistent
+
+    scheduler_config: # 10000 warmup steps
+      target: extern.dreamview.ldm.lr_scheduler.LambdaLinearScheduler
+      params:
+        warm_up_steps: [ 100 ]
+        cycle_lengths: [ 10000000000000 ] # discarded
+        f_start: [ 1.e-6 ]
+        f_max: [ 1. ]
+        f_min: [ 1. ]
+
+    unet_config:
+      target: extern.dreamview.ldm.modules.diffusionmodules.openaimodel.MultiViewUNetModel
+      params:
+        image_size: 32 # discarded
+        in_channels: 4
+        out_channels: 4
+        model_channels: 320
+        attention_resolutions: [ 4, 2, 1 ]
+        num_res_blocks: 2
+        channel_mult: [ 1, 2, 4, 4 ]
+        num_head_channels: 64 # need to fix for flash-attn
+        use_spatial_transformer: True
+        use_linear_in_transformer: True
+        transformer_depth: 1
+        context_dim: 1024
+        use_checkpoint: False
+        legacy: False
+        camera_dim: 16
+
+    first_stage_config:
+      target: extern.dreamview.ldm.models.autoencoder.AutoencoderKL
+      params:
+        embed_dim: 4
+        monitor: val/rec_loss
+        ddconfig:
+          double_z: true
+          z_channels: 4
+          resolution: 256
+          in_channels: 3
+          out_ch: 3
+          ch: 128
+          ch_mult:
+          - 1
+          - 2
+          - 4
+          - 4
+          num_res_blocks: 2
+          attn_resolutions: []
+          dropout: 0.0
+        lossconfig:
+          target: torch.nn.Identity
+
+    cond_stage_config:
+      target: extern.dreamview.ldm.modules.encoders.modules.FrozenOpenCLIPEmbedder
+      params:
+        freeze: True
+        layer: "penultimate"
+
+
+data:
+  target: extern.dreamview.ldm.data.simple.Combined2DAnd3DModuleFromConfig
+  params:
+    root_dir_2d: 'path/to/2d_dataset'
+    root_dir_3d: 'path/to/3d_dataset'
+    batch_size: 4
+    num_workers: 32
+    total_view: 32
+
+
+lightning:
+  find_unused_parameters: True
+  metrics_over_trainsteps_checkpoint: True
+  modelcheckpoint:
+    params:
+      every_n_train_steps: 500
+  callbacks:
+    image_logger:
+      target: main.ImageLogger
+      params:
+        batch_frequency: 50
+        max_images: 32
+        increase_log_steps: False
+        log_first_step: True
+        log_images_kwargs:
+          use_ema_scope: False
+          inpaint: False
+          plot_progressive_rows: False
+          plot_diffusion_rows: False
+          N: 32
+          unconditional_guidance_scale: 3.0
+          unconditional_guidance_label: [""]
+
+  trainer:
+    benchmark: True
+    val_check_interval: 5000000 # discarded
+    num_sanity_val_steps: 0
+    accumulate_grad_batches: 4 # 4 views * 4 obj * 32 gpus * 4 accumulate = 2048
