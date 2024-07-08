@@ -15,5 +15,5 @@ python  main.py \
         --num_nodes 4 \
         --seed 42 \
         --check_val_every_n_epoch 10 \
-        --finetune_from ckpts/sd-v2.1-base-4view.pt
+        # --finetune_from ckpts/sd-v2.1-base-4view.pt
     
