@@ -14,8 +14,8 @@ You can check `DreamView-2D/` for the text-to-image generation code.
 
 ## TODO
 - [ ] Release the rendered dataset
-- [ ] Release the code of DreamView-3D
-- [ ] Release the training script for training DreamView-2D
+- [x] Release the code of DreamView-3D
+- [x] Release the training script for training DreamView-2D
 
 ## Preliminary
 ### Environment
@@ -40,7 +40,11 @@ and you are expected to obtain the below result:
 It takes about 10G GPU memory to run the text-to-image generation, and you can modify the `DreamView-2D/t2i.py` to generate your own content.
 
 ### Training
-TBD...
+```
+cd DreamView-2D
+bash train.sh
+```
+Note that we use 4 8*V100 machine to train DreamView-2D by default, and to accelerate convergence, you can consider using [MVDream](https://github.com/bytedance/MVDream) as the initialization parameter.
 
 ## Text-to-3D Generation
 TBD...
