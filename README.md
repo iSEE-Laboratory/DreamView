@@ -58,10 +58,10 @@ If you have any problem, feel free to open an issue or contact me :-)
 ## Citation
 - If you find this repo helpful, please consider citing us:
 ``` bibtex
-@article{yan2024DreamView,
+@inproceedings{yan2024DreamView,
   author = {Yan, Junkai and Gao, Yipeng and Yang, Qize and Wei, Xihan and Xie, Xuansong and Wu, Ancong and Zheng, Wei-Shi},
   title = {DreamView: Injecting View-specific Text Guidance into Text-to-3D Generation},
-  journal = {arXiv},
+  booktitle = {ECCV},
   year = {2024}
 }
 ```
