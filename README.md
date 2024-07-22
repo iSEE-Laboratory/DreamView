@@ -1,13 +1,14 @@
 # DreamView
-Official PyTorch implementation of paper “DreamView: Injecting View-specific Text Guidance into Text-to-3D Generation”. 
+Official PyTorch implementation of ECCV 2024 paper “DreamView: Injecting View-specific Text Guidance into Text-to-3D Generation”. 
 
 ![-](assets/2D.png)
 
-This repository currently only includes the inference code for text-to-image generation (DreamView-2D). The remaining code, such as the training script and 3D generation, will be released in two months.
+This repository includes the training and inference code for text-to-image generation (DreamView-2D), and text-to-3D generation (DreamView-3D).
 
-You can check `DreamView-2D/` for the text-to-image generation code.
+You can check `DreamView-2D/` and `DreamView-3D/` for the text-to-image and text-to-3D generation codes, respectively.
 
 ## News
+- 2024/7/22: We release the code and script for training DreamView-2D and text-to-3D generation via DreamView-3D
 - 2024/7/3: Our paper is accepted by ECCV 2024, congratulations and many thanks to the co-authors!🥳🎉🎊
 - 2024/4/11: We release the inference code of DreamView-2D, and the DreamView checkpoint: [Baidu Drive](https://pan.baidu.com/s/19k9qK7bNNWlChWfe483s9w?pwd=r3ie), [Google Drive](https://drive.google.com/file/d/1MD35zN5niGkV_u77cyLClpVFKjreO1Bf/view?usp=sharing), [ModelScope](https://www.modelscope.cn/models/Drinky/DreamView/summary), [HuggingFace](https://huggingface.co/Drinky/DreamView)
 - 2024/4/10: Our arxiv paper can be found [here](https://arxiv.org/abs/2404.06119)
@@ -20,9 +21,7 @@ You can check `DreamView-2D/` for the text-to-image generation code.
 ## Preliminary
 ### Environment
 - For DreamView-2D: please follow [MVDream](https://github.com/bytedance/MVDream) to prepare the environments
-- For DreamView-3D: TBD...
-
-We also provide our environment for reference, as shown in `DreamView-2D/env-DreamView-2D.txt`
+- For DreamView-3D: please follow [threestudio](https://github.com/threestudio-project/threestudio) to prepare the environments
 
 ### Checkpoint
 - Download the checkpoints at [Baidu Drive](https://pan.baidu.com/s/19k9qK7bNNWlChWfe483s9w?pwd=r3ie), [Google Drive](https://drive.google.com/file/d/1MD35zN5niGkV_u77cyLClpVFKjreO1Bf/view?usp=sharing), [ModelScope](https://www.modelscope.cn/models/Drinky/DreamView/summary), [HuggingFace](https://huggingface.co/Drinky/DreamView)
@@ -47,7 +46,8 @@ bash train.sh
 Note that we use 4 8*V100 machine to train DreamView-2D by default, and to accelerate convergence, you can consider using [MVDream](https://github.com/bytedance/MVDream) as the initialization parameter.
 
 ## Text-to-3D Generation
-TBD...
+![-](assets/output-3d.gif)
+
 
 If you have any problem, feel free to open an issue or contact me :-)
 
