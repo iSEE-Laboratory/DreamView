@@ -47,12 +47,16 @@ Note that we use 4 8*V100 machine to train DreamView-2D by default, and to accel
 
 ## Text-to-3D Generation
 ![-](assets/output-3d.gif)
-
-
-If you have any problem, feel free to open an issue or contact me :-)
+Running the script below to reproduce the results shown above
+```
+cd DreamView-3D
+bash reproduce.sh
+```
+Note that the above script may require ~60G GPU memory, so you may run it with an A100 GPU.
 
 ## Acknowledgement
-- The repository of DreamView-2d is heavily based on [MVDream](https://github.com/bytedance/MVDream) and [Stable Diffusion](https://huggingface.co/stabilityai/stable-diffusion-2-1-base). 
+- The code of DreamView-2d is heavily based on [MVDream](https://github.com/bytedance/MVDream) and [Stable Diffusion](https://huggingface.co/stabilityai/stable-diffusion-2-1-base).
+- The code of DreamView-3d is heavily based on [MVDream-threestudio](https://github.com/bytedance/MVDream-threestudio) and [threestudio](https://github.com/threestudio-project/threestudio). 
 - We would like to thank the authors for sharing their exciting works.
 
 ## Citation
