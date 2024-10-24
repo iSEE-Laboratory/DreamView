@@ -14,7 +14,6 @@ You can check `DreamView-2D/` and `DreamView-3D/` for the text-to-image and text
 - 2024/4/10: Our arxiv paper can be found [here](https://arxiv.org/abs/2404.06119)
 
 ## TODO
-- [ ] Release the rendered dataset
 - [x] Release the code of DreamView-3D
 - [x] Release the training script for training DreamView-2D
 
